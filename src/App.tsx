@@ -7,6 +7,7 @@ import { Specs } from './components/Specs';
 import { RegisterForm } from './components/RegisterForm';
 import { CartDrawer } from './components/CartDrawer';
 import { NotificationToast } from './components/NotificationToast';
+import { Chatbot } from './components/Chatbot';
 
 function AppContent() {
   return (
@@ -28,6 +29,9 @@ function AppContent() {
 
       {/* Slide-in behavior notification toasts */}
       <NotificationToast />
+
+      {/* Phase 6: AI Chatbot Support */}
+      <Chatbot />
     </>
   );
 }
