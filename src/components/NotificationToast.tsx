@@ -8,7 +8,6 @@ export const NotificationToast: React.FC = () => {
   const [activeToasts, setActiveToasts] = useState<UserLog[]>([]);
   const lastLoggedSection = useRef<string>('');
 
-  // 1. Behavior Scroll Tracking
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'features', 'dashboard', 'specs', 'register'];
@@ -45,12 +44,12 @@ export const NotificationToast: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [addLog]);
 
-  // 2. Manage Toast popups queue
+
   useEffect(() => {
     if (logs.length > 0) {
       const latestLog = logs[0];
       
-      // Avoid duplicates in active toasts
+      
       setActiveToasts(prev => {
         if (prev.some(t => t.id === latestLog.id)) return prev;
         return [...prev, latestLog];

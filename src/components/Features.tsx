@@ -6,7 +6,7 @@ export const Features: React.FC = () => {
   const { addLog } = useApp();
 
   const handleFeatureHover = (title: string) => {
-    // Log micro-interaction when user hovers features
+  
     addLog('hover', `Xem thông tin tính năng: ${title}`);
   };
 

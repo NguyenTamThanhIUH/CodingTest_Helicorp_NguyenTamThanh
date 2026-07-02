@@ -6,10 +6,8 @@ export const Navbar: React.FC = () => {
   const { theme, toggleTheme, cart, wishlist, setCartOpen, addLog } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Total cart items count
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
   
-  // Total wishlist items count
   const wishlistCount = wishlist.length;
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {

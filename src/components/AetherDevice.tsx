@@ -5,7 +5,6 @@ import { Power, Wind } from 'lucide-react';
 export const AetherDevice: React.FC = () => {
   const { power, fanSpeed, auraColor, aqi, filterLife } = useApp();
 
-  // Determine fan speed rotation duration
   const getFanDuration = () => {
     if (!power) return '0s';
     if (fanSpeed === 1) return '2.5s';
@@ -17,7 +16,6 @@ export const AetherDevice: React.FC = () => {
     return '1.2s';
   };
 
-  // Determine AQI category text and color
   const getAqiStatus = () => {
     if (aqi <= 35) return { text: 'Tốt', color: '#10b981' };
     if (aqi <= 75) return { text: 'Bình thường', color: '#06b6d4' };

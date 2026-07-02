@@ -28,9 +28,9 @@ export const RegisterForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // Vietnamese Phone Validation Regex
+
   const phoneRegex = /^(0|84)(3|5|7|8|9)[0-9]{8}$/;
-  // Standard Email Regex
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const validateField = (name: string, value: string) => {
@@ -78,7 +78,7 @@ export const RegisterForm: React.FC = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Final full validation
+ 
     const newErrors: FormErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = 'Họ và tên không được để trống';
     if (!formData.email) newErrors.email = 'Email không được để trống';
@@ -102,7 +102,7 @@ export const RegisterForm: React.FC = () => {
     };
 
     try {
-      // Connect to a real public webhook API (httpbin.org mirrors back the request)
+      
       const response = await fetch('https://httpbin.org/post', {
         method: 'POST',
         headers: {
@@ -115,7 +115,7 @@ export const RegisterForm: React.FC = () => {
         setSubmitStatus('success');
         addLog('form', `Gửi Webhook thành công! Nhận phản hồi HTTP 200 từ https://httpbin.org/post`);
         
-        // Auto-add selected color edition to the cart!
+       
         const editionNameMap: Record<string, { name: string; price: number; colorName: string }> = {
           cyan: { name: 'Aether Aura Smart (Ice Cyan)', price: 249, colorName: 'Ice Cyan' },
           purple: { name: 'Aether Aura Smart (Neon Purple)', price: 259, colorName: 'Neon Purple' },
@@ -133,10 +133,10 @@ export const RegisterForm: React.FC = () => {
           colorName: chosenItem.colorName
         });
 
-        // Reset Form
+ 
         setFormData({ fullName: '', email: '', phone: '', edition: 'cyan' });
         
-        // Show the cart panel after a brief delay
+    
         setTimeout(() => {
           setCartOpen(true);
         }, 1500);

@@ -29,7 +29,7 @@ import {
   callGeminiAPI,
 } from '../services/chatService';
 
-/* ────────── Types ────────── */
+
 interface ChatMessage {
   id: string;
   role: 'user' | 'bot';
@@ -45,7 +45,7 @@ interface QuickAction {
   prompt: string;
 }
 
-/* ────────── Helpers ────────── */
+
 function uid(): string {
   return Math.random().toString(36).substring(2, 10);
 }
@@ -56,18 +56,18 @@ function nowTime(): string {
 const STORAGE_KEY_APIKEY = 'aether-gemini-api-key';
 const STORAGE_KEY_MODE   = 'aether-chat-mode';
 
-/* ────────── Component ────────── */
+
 export const Chatbot: React.FC = () => {
   const { addLog } = useApp();
 
-  /* ── Core state ── */
+
   const [isOpen, setIsOpen]               = useState(false);
   const [messages, setMessages]           = useState<ChatMessage[]>([]);
   const [input, setInput]                 = useState('');
   const [isTyping, setIsTyping]           = useState(false);
   const [hasNewMessage, setHasNewMessage] = useState(false);
 
-  /* ── AI Mode state ── */
+
   const [mode, setMode] = useState<ChatMode>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_MODE);
     return (saved === 'gemini' ? 'gemini' : 'kb') as ChatMode;
@@ -78,21 +78,20 @@ export const Chatbot: React.FC = () => {
   const [apiStatus, setApiStatus] = useState<'idle' | 'ok' | 'error'>('idle');
   const [apiError, setApiError]   = useState('');
 
-  /* ── Settings panel ── */
+
   const [showSettings, setShowSettings]     = useState(false);
   const [keyDraft, setKeyDraft]             = useState('');
   const [showKey, setShowKey]               = useState(false);
   const [isTestingKey, setIsTestingKey]     = useState(false);
 
-  /* ── Conversation history for Gemini context ── */
   const historyRef = useRef<ServiceMessage[]>([]);
 
-  /* ── Refs ── */
+ 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef       = useRef<HTMLInputElement>(null);
   const greetingShown  = useRef(false);
 
-  /* ── Quick actions ── */
+
   const quickActions: QuickAction[] = [
     { label: 'Báo giá',    icon: <ShoppingCart size={13} />, prompt: 'Giá các phiên bản Aether Aura là bao nhiêu?' },
     { label: 'Thông số',   icon: <Zap size={13} />,          prompt: 'Thông số kỹ thuật chính của Aether Aura Smart?' },
@@ -101,24 +100,24 @@ export const Chatbot: React.FC = () => {
     { label: 'Hỗ trợ',    icon: <HelpCircle size={13} />,   prompt: 'Tôi cần hỗ trợ về sản phẩm Aether Aura' },
   ];
 
-  /* ── Persist settings ── */
+
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_MODE, mode);
   }, [mode]);
 
-  /* ── Scroll ── */
+ 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  /* ── Auto-focus ── */
+  
   useEffect(() => {
     if (isOpen && !showSettings) {
       setTimeout(() => inputRef.current?.focus(), 300);
     }
   }, [isOpen, showSettings]);
 
-  /* ── Greeting ── */
+
   useEffect(() => {
     if (isOpen && !greetingShown.current) {
       greetingShown.current = true;
@@ -140,7 +139,7 @@ export const Chatbot: React.FC = () => {
     }
   }, [isOpen, mode, geminiKey]);
 
-  /* ────────── Bot reply ────────── */
+
   const botReply = useCallback(
     async (userText: string) => {
       setIsTyping(true);
@@ -157,7 +156,7 @@ export const Chatbot: React.FC = () => {
       if (mode === 'gemini' && geminiKey) {
         try {
           const answer = await callGeminiAPI(geminiKey, historyRef.current, userText);
-          // Append to history for multi-turn context
+       
           const updatedHistory: ServiceMessage[] = [
             ...historyRef.current,
             { role: 'user', text: userText },
@@ -173,7 +172,7 @@ export const Chatbot: React.FC = () => {
           );
         }
       } else {
-        // KB mode: simulate thinking delay
+       
         await new Promise((r) => setTimeout(r, 600 + Math.random() * 600));
         addBotMsg(findKBAnswer(userText));
       }
@@ -181,7 +180,7 @@ export const Chatbot: React.FC = () => {
     [mode, geminiKey, isOpen]
   );
 
-  /* ── Send ── */
+
   const handleSend = () => {
     const trimmed = input.trim();
     if (!trimmed || isTyping) return;
@@ -204,7 +203,7 @@ export const Chatbot: React.FC = () => {
     botReply(qa.prompt);
   };
 
-  /* ── Toggle ── */
+ 
   const toggleChat = () => {
     setIsOpen((prev) => {
       const next = !prev;
@@ -214,7 +213,7 @@ export const Chatbot: React.FC = () => {
     });
   };
 
-  /* ── Settings handlers ── */
+  
   const openSettings = () => {
     setKeyDraft(geminiKey);
     setApiStatus('idle');
@@ -234,7 +233,7 @@ export const Chatbot: React.FC = () => {
       setApiStatus('idle');
     }
     setShowSettings(false);
-    // Reset conversation so greeting reflects new mode
+
     greetingShown.current = false;
     setMessages([]);
     historyRef.current = [];
@@ -277,7 +276,7 @@ export const Chatbot: React.FC = () => {
     addLog('click', 'Chatbot: Chuyển về KB mode');
   };
 
-  /* ── Markdown renderer ── */
+
   const renderMarkdown = (text: string) => {
     return text.split('\n').map((line, i) => {
       const parts = line.split(/(\*\*[^*]+\*\*)/g).map((part, j) => {
@@ -297,7 +296,7 @@ export const Chatbot: React.FC = () => {
 
   const isGeminiActive = mode === 'gemini' && !!geminiKey;
 
-  /* ── Render ── */
+
   return (
     <>
       {/* ═══ Chat Window ═══ */}

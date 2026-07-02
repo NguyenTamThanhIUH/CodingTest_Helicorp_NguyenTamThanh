@@ -7,7 +7,7 @@ export const Hero: React.FC = () => {
   const { addToCart, setCartOpen, addLog } = useApp();
 
   const handlePreOrder = () => {
-    // Add default device to cart
+  
     addToCart({
       id: 'aether-aura-smart',
       name: 'Aether Aura Smart Air Purifier',

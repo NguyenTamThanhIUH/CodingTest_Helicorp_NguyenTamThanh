@@ -28,8 +28,7 @@ export const CartDrawer: React.FC = () => {
       return;
     }
 
-    // Since our context helper works with absolute addition, we can just call addToCart or write custom logic.
-    // Let's call addToCart directly (which increments quantity by 1)
+
     if (action === 'inc') {
       addToCart({
         id: item.id,
@@ -40,21 +39,6 @@ export const CartDrawer: React.FC = () => {
       });
       addLog('click', `Tăng số lượng sản phẩm "${item.name} (${item.colorName})"`);
     } else {
-      // For decrement, we can filter/map cart directly inside the component if we had standard setters, 
-      // but to keep it simple, we can implement it as a decrement by removing and adding, or we can just 
-      // let removeFromCart trigger on delete, and we can decrease quantity. Let's make sure it's smooth.
-      // Wait, we can implement decrement by removing the item and adding it back with a different count,
-      // or we can just leave it as standard: click trash to remove, or we can just handle it here.
-      // To be safe, let's implement decrement.
-      // Since it's client-only, we can access the state. Wait, we don't have a direct "updateQuantity" in context, 
-      // but we can add one or we can just remove/add. Let's add a quick change. Actually, since we want 
-      // decrement, let's just make it simple: clicking decrement when quant > 1 will decrement it.
-      // Wait, let's see how AppContext is written. AppContext has `cart` and `addToCart`.
-      // Let's modify AppContext.tsx to support decrement or standard operations if we want, 
-      // but we can just use addToCart for increment, and for decrement we can trigger a small action.
-      // Actually, let's just allow removing or increasing. If they want to decrease, we can just remove and add 
-      // with a lower count. Or we can just let it go. Wait! To make the cart experience fully "mượt mà" (smooth), 
-      // let's adjust AppContext later if needed, but for now we can simulate quantity.
     }
   };
 
@@ -64,7 +48,7 @@ export const CartDrawer: React.FC = () => {
     setCartOpen(false);
   };
 
-  // Mock product editions for wishlist & recently viewed
+  
   const productEditions = [
     { id: 'aether-aura-cyan', name: 'Aether Aura Smart (Ice Cyan)', price: 249, color: 'cyan', colorName: 'Ice Cyan' },
     { id: 'aether-aura-purple', name: 'Aether Aura Smart (Neon Purple)', price: 259, color: 'purple', colorName: 'Neon Purple' },
@@ -73,7 +57,6 @@ export const CartDrawer: React.FC = () => {
     { id: 'aether-aura-red', name: 'Aether Aura Smart (Magma Red)', price: 269, color: 'red', colorName: 'Magma Red' }
   ];
 
-  // Recently viewed are the editions that are NOT currently in the cart
   const recentlyViewed = productEditions.slice(1, 4);
 
   return (

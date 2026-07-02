@@ -13,10 +13,9 @@ export const DeviceDashboard: React.FC = () => {
     addLog
   } = useApp();
 
-  // Store AQI readings for the live SVG chart
+
   const [aqiHistory, setAqiHistory] = useState<number[]>([78, 77, 78, 76, 75, 73, 75, 78, 77, 78]);
 
-  // Keep AQI history updated as AQI changes
   useEffect(() => {
     setAqiHistory(prev => {
       const nextHistory = [...prev.slice(1), aqi];
@@ -60,7 +59,7 @@ export const DeviceDashboard: React.FC = () => {
       return { x, y };
     });
 
-    // Create line path
+  
     const linePath = coords.map((c, i) => `${i === 0 ? 'M' : 'L'} ${c.x.toFixed(1)} ${c.y.toFixed(1)}`).join(' ');
     
     // Create fill path (close the shape to the bottom)
