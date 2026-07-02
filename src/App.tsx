@@ -1,6 +1,8 @@
 import { AppProvider } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Features } from './components/Features';
+import { DeviceDashboard } from './components/DeviceDashboard';
 import { CartDrawer } from './components/CartDrawer';
 
 function AppContent() {
@@ -12,7 +14,8 @@ function AppContent() {
       {/* Main Sections */}
       <main style={{ flex: 1 }}>
         <Hero />
-        {/* Further sections (Features, Dashboard, Specs, Form, Chatbot) will be added here in subsequent phases */}
+        <Features />
+        <DeviceDashboard />
       </main>
 
       {/* Slide-out Cart & Wishlist Drawer */}
