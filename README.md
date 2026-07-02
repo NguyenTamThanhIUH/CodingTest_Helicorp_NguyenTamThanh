@@ -1,32 +1,32 @@
-# React + TypeScript + Vite
+# HELICORP | TEST
+## THIẾT KẾ LANDING PAGE
+## Ứng viên: Nguyễn Tâm Thành
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing page giới thiệu sản phẩm công nghệ / thiết bị thông minh được xây dựng bằng React + TypeScript + Vite. Dự án tập trung vào trải nghiệm trình bày cao cấp, responsive, tối ưu hiệu năng và các tính năng tương tác phục vụ bài test.
 
-Currently, two official plugins are available:
+## Tổng Quan
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Website mô phỏng một thương hiệu smart device với phong cách hiện đại, nội dung được chia theo từng section rõ ràng, có Dark Mode, chatbot hỗ trợ, mini e-commerce và form đăng ký nhận tin kết nối webhook.
 
-## React Compiler
+## Tính Năng Chính
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Hero section nổi bật với hiệu ứng Aura premium.
+- Navigation cố định, tối ưu điều hướng trên desktop và mobile.
+- Khối tính năng, dashboard mô phỏng và thông số kỹ thuật trực quan.
+- Mini e-commerce: wishlist, giỏ hàng pre-order, sản phẩm đã xem.
+- Form đăng ký nhận tin có validation và kết nối webhook.
+- Chatbot hỗ trợ tư vấn sản phẩm qua KB hoặc Gemini API.
+- SEO cơ bản và tối ưu performance bằng lazy loading, code splitting và skeleton loading.
 
-## Expanding the Oxlint configuration
+## Công Nghệ Sử Dụng
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- React 19
+- TypeScript
+- Vite
+- CSS Variables / custom responsive layout
+- Lucide React icons
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Thông Tin Bài Test
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+HELICORP | VÒNG 2 - TEST
+THIẾT KẾ LANDING PAGE

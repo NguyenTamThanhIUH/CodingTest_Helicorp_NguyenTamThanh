@@ -140,6 +140,11 @@ h1, h2, h3, h4, h5, h6 {
   50% { transform: translateY(-15px); }
 }
 
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
 /* Header & Navbar */
 .navbar-container {
   position: fixed;
@@ -1120,6 +1125,30 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1280px;
   margin: 0 auto;
   position: relative;
+}
+
+.features-section,
+.dashboard-section,
+.specs-section,
+.register-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+.section-loading {
+  padding: 4rem 2rem;
+}
+
+.section-loading-card {
+  max-width: 1280px;
+  height: 320px;
+  margin: 0 auto;
+  border-radius: var(--card-radius);
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 37%, var(--bg-secondary) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
 .register-container {
