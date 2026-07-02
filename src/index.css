@@ -918,3 +918,200 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Specs Section */
+.specs-section {
+  padding: 8rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Product Catalog / Editions styling */
+.editions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edition-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+}
+
+.edition-card:hover {
+  transform: translateX(8px);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.edition-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edition-visual {
+  width: 44px;
+  height: 60px;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.4s ease;
+}
+
+.edition-color-aura {
+  position: absolute;
+  top: 5px;
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 12px;
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0.8;
+}
+
+.edition-color-aura.cyan { background-color: var(--aura-cyan); }
+.edition-color-aura.purple { background-color: var(--aura-purple); }
+.edition-color-aura.green { background-color: var(--aura-green); }
+.edition-color-aura.orange { background-color: var(--aura-orange); }
+.edition-color-aura.red { background-color: var(--aura-red); }
+
+.edition-device-silhouette {
+  width: 22px;
+  height: 44px;
+  background: linear-gradient(180deg, #94a3b8, #cbd5e1);
+  margin: 10px auto 0;
+  border-radius: 8px 8px 2px 2px;
+}
+
+[data-theme="dark"] .edition-device-silhouette {
+  background: linear-gradient(180deg, #475569, #334155);
+}
+
+.edition-text h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.edition-text p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.edition-price-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edition-price {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.action-btn-small {
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-primary);
+  color: white;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.action-btn-small:hover {
+  background-color: var(--accent-primary-hover);
+  transform: translateY(-2px);
+}
+
+.wishlist-btn-toggle {
+  color: var(--text-muted);
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  transition: all 0.3s ease;
+}
+
+.wishlist-btn-toggle:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.wishlist-btn-toggle.active {
+  color: var(--danger);
+  border-color: var(--danger);
+  background-color: rgba(239, 68, 68, 0.08);
+  fill: var(--danger);
+}
+
+/* Specs Sheet */
+.specs-sheet-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table td {
+  padding: 1.25rem 0.5rem;
+  font-size: 0.95rem;
+}
+
+.specs-label {
+  font-weight: 700;
+  color: var(--text-primary);
+  width: 35%;
+}
+
+.specs-value {
+  color: var(--text-secondary);
+}
+
+/* Responsive Specs */
+@media (max-width: 1024px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+

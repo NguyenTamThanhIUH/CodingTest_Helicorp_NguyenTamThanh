@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { DeviceDashboard } from './components/DeviceDashboard';
+import { Specs } from './components/Specs';
 import { CartDrawer } from './components/CartDrawer';
 
 function AppContent() {
@@ -16,6 +17,7 @@ function AppContent() {
         <Hero />
         <Features />
         <DeviceDashboard />
+        <Specs />
       </main>
 
       {/* Slide-out Cart & Wishlist Drawer */}
